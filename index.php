@@ -1,35 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Atlanta United Fanzone Chat</title>
+<?php
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	require_once "includes/head.php";
+	require_once "includes/header.php";
+?>	
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</head>
-<body>
-	
-	<nav class="navbar navbar-inverse navbar-top">
-		<div class="container-fluid">
-			<dir id="left-nav-wrapper" class="col-sm-3">
-				<a href=""><div class="button-wrapper col-sm-8 col-md-5"><img src="img/logo.svg"></div></a>
-			</dir>
-			<div class="navbar-header col-sm-6 text-center">
-				<div id="title">ATLANTA UNITED FC FANZONE</div>
-			</div>
-			<div id="right-nav-wrapper" class="col-sm-3">
-				<div class="welcome-wrapper hidden"><div>Welcome back, </div></div>
-				<div class="button-wrapper"><button type="button" class="btn btn-warning">REGISTER</button></div>
-				<div class="button-wrapper"><button type="button" class="btn btn-link">LOGIN</button></div>
-				<div class="button-wrapper hidden"><button type="button" class="btn btn-link">LOGOUT</button></div>
-			</div>
-		</div>
-	</nav>
 
 	<div id="main-wrapper" class="container-fluid">
 		
@@ -97,6 +74,4 @@
 		</div>
 	</div>
 
-	
-</body>
-</html>
+<?php require_once "includes/footer.php"; ?>	
