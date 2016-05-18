@@ -5,6 +5,10 @@
 
 	require_once "includes/head.php";
 	require_once "includes/header.php";
+
+	$posts = DB::query("SELECT * FROM posts");
+	$posts = array_reverse($posts);
+	date_default_timezone_set("America/New_York");
 ?>	
 
 
@@ -44,33 +48,45 @@
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
-	</div>
-
-	<div id="content-wrapper" class="col-sm-8 col-sm-offset-2">
-		<div id="mission-wrapper">
-			<h2>The Goal</h2>
-			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</div>
-		</dir>
-		<hr>
-		<div id="posts-wrapper">
-			<div id="my-post-wrapper">
-				<div class="col-sm-10"><h2>Recent Posts</h2></div>
-				<div class="col-sm-2 text-right">+</div>
-				<div class="col-sm-12">
-					<h3>Post</h3>
-					<textarea rows="5"></textarea>
-					<div class="button-wrapper"><button class="btn btn-primary">POST</button></div>
+	
+		<div id="content-wrapper" class="col-sm-8 col-sm-offset-2">
+			<div id="mission-wrapper">
+				<h2>The Goal</h2>
+				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>
 			</div>
-			<div id="recent-posts-wrapper">
-				
+			<hr>
+			<div id="post-entry-wrapper">
+				<?php if(isset($_SESSION["userName"])): ?>
+				<form role="form" action="post_process.php" method="post">
+				  <div class="form-group">
+				    <label class="col-sm-12" for="post_text">Make a post</label>
+				    <textarea name="post_text" type="text" id="post-text" maxlength="255"></textarea>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Post</button>
+					</form>
+				<?php else: ?>
+					<h3>You must be <a href="login.php">logged in</a> to make a post</h3>		
+				<?php endif; ?>
 			</div>
+			<hr>
+			<div id="posts-wrapper">
+				<?php 
+				foreach($posts as $post):
+				$time_stamp_unix = strtotime($post["timeStamp"]); ?>
+					<div class="post">
+						<div class="text"><?php print $post["postText"]; ?></div>	
+						<div class="date"><?php print date("D F j, Y -  h:ia", $time_stamp_unix); ?></div>
+						<div class="user">Posted by: <a href=""><?php print $post["userName"]; ?></a></div>
+					</div>
+				<?php endforeach; ?>
+			</div>	
+
 		</div>
 	</div>
 

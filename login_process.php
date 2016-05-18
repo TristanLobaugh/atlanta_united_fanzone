@@ -13,14 +13,16 @@
 
 	try{
 		$result = DB::query("SELECT * FROM users WHERE userName = %s", $_POST["userName"]);
-		foreach ($result as $row){
-			$hash = $row["password"];
-			$_SESSION["userName"] = $row["userName"];
-			$_SESSION["email"] = $row["email"];
+			$hash = $result[0]["password"];
 			$passwordVerify = password_verify($_POST["password"], $hash);
-			header("Location: index.php?password=correct");
-			exit;
-		}
+			if($passwordVerify){
+				$_SESSION["userName"] = $_POST["userName"];
+				$_SESSION["id"] = $result[0]["id"];
+				header("Location: index.php?password=correct");
+				exit;
+			}else{
+				header("Location: login.php?login=fail");
+			}
 	}catch(MeekroDBException $e){
 		header("Location: /login.php?error=yes");
 		exit;
