@@ -6,7 +6,7 @@
 	require_once "includes/head.php";
 	require_once "includes/header.php";
 
-	$posts = DB::query("SELECT * FROM posts");
+	$posts = DB::query("SELECT posts.*, COALESCE(SUM(votes.vote_direction),0) as aggregateVotes FROM posts LEFT JOIN votes ON posts.id = votes.pid GROUP BY posts.id;");
 	$posts = array_reverse($posts);
 	date_default_timezone_set("America/New_York");
 ?>	
@@ -80,9 +80,17 @@
 				foreach($posts as $post):
 				$time_stamp_unix = strtotime($post["timeStamp"]); ?>
 					<div class="post">
-						<div class="text"><?php print $post["postText"]; ?></div>	
+						<div class="text col-sm-10"><?php print $post["postText"]; ?></div>	
 						<div class="date"><?php print date("D F j, Y -  h:ia", $time_stamp_unix); ?></div>
 						<div class="user">Posted by: <a href=""><?php print $post["userName"]; ?></a></div>
+						<div class="upVote-wrapper" ng-click="upVote($event, 1)" id="<?php print $post['id']; ?>">
+							<span class="counter"><?php print $post["aggregateVotes"]; ?></span>
+							<span class="glyphicon glyphicon-arrow-up text-success" aria-hidden="true"></span>
+						</div>
+						<div class="downVote-wrapper">
+							<span class="counter">3</span>
+							<span class="glyphicon glyphicon-arrow-down text-danger" aria-hidden="true"></span>
+						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>	
