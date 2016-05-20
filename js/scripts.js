@@ -2,7 +2,7 @@ var fcApp = angular.module("fcApp", []);
 
 fcApp.controller("fcController", function($scope, $http){
 
-	$scope.follow = function(userName){
+	$scope.follow = function(userName, follow){
 		$http.post("follow_process.php", {
 			poster: userName,
 		}). then(function successCallback(response){
@@ -21,6 +21,8 @@ fcApp.controller("fcController", function($scope, $http){
 			console.log(response);
 		});
 	}
+
+
 
 	$scope.upVote = function(element, vote){
 		// console.log(element.target.parentElement.id);

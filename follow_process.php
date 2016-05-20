@@ -18,14 +18,23 @@
 
 		$jsonRevieved = file_get_contents("php://input");
 		$decodedJSON = json_decode($jsonRevieved, true);
-		$poster_unserName = $decodedJSON["userName"];
+		$poster_unserName = $decodedJSON["poster"];
+		$followMethod = $decoded_json["followMethod"];
 
+
+		if($followMethod == "follow"){
 			DB::insert("following", array(
 				"follower" => $_SESSION["userName"],
 				"poster" => $poster_unserName
-				));
-			print json_encode($total_votes[0]["voteTotal"], JSON_NUMERIC_CHECK);
-			
+				)
+			);
+			print "following";
+			exit;
+		}else if($followMethod == "unfollow"){
+			DB:: delete("following", "follower=%s AND poster=%s", $_SESSION["userName"], $poster_userName);
+			print "unfollowing";
+			exit;
+		}
 	}
 
 ?>
