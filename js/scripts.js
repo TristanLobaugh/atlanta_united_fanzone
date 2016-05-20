@@ -2,21 +2,12 @@ var fcApp = angular.module("fcApp", []);
 
 fcApp.controller("fcController", function($scope, $http){
 
-	$scope.follow = function(userName, follow){
+	$scope.follow = function(userName, followMethod){
 		$http.post("follow_process.php", {
 			poster: userName,
+			followMethod: followMethod
 		}). then(function successCallback(response){
-			if(response.data == "notLoggedIn"){
-				element.currentTarget.children[0].innerHTML = "Must be logged in to vote!";
-			}else if(response.data == "alreadyVoted"){
-				element.currentTarget.children[0].innerHTML = "Sorry you already voted!";
-			}else{
-				if(vote == 1){
-						element.currentTarget.children[0].innerHTML = response.data;
-				}else{
-					element.target.previousElementSibling.innerHTML = response.data;
-				}
-			}
+			console.log(response.data);
 		}, function errorCallback(response){
 			console.log(response);
 		});

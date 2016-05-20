@@ -1,10 +1,6 @@
 <?php
-require_once "includes/meekrodb.2.3.class.php";
-DB::$user = "x";
-DB::$password = "x";
-DB::$dbName = "atlanta_united_fc";
-DB::$host = "127.0.0.1";
-session_start();
+require_once "includes/db_connect.php";
+
 ?>
 
 <!DOCTYPE html">
