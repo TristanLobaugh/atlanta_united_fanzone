@@ -44,7 +44,7 @@ body img {
   width: 150px;
   margin: auto;
 }
-/* line 40, ../compass/sass/style.scss */
+/* line 39, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post {
   width: 95%;
   position: relative;
@@ -55,34 +55,52 @@ body img {
   color: #262626;
   margin: 20px auto;
 }
-/* line 49, ../compass/sass/style.scss */
+/* line 48, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post .text {
   font-size: 20px;
   margin: 15px 5px 10px 15px;
 }
-/* line 53, ../compass/sass/style.scss */
+/* line 52, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post .date {
   position: absolute;
   bottom: 10px;
   left: 10px;
 }
-/* line 58, ../compass/sass/style.scss */
+/* line 57, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post .user {
   position: absolute;
   bottom: 10px;
   right: 100px;
 }
-/* line 63, ../compass/sass/style.scss */
+/* line 62, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post .upVote-wrapper {
   font-size: 20px;
   position: absolute;
   right: 30px;
   top: 40px;
 }
-/* line 69, ../compass/sass/style.scss */
+/* line 68, ../compass/sass/style.scss */
 #main-wrapper #posts-wrapper .post .downVote-wrapper {
   font-size: 20px;
   position: absolute;
   right: 30px;
   bottom: 40px;
+}
+/* line 74, ../compass/sass/style.scss */
+#main-wrapper #posts-wrapper .post #error-message {
+  font-size: 18px;
+  color: red;
+  position: absolute;
+  bottom: 10px;
+  left: 250px;
+}
+
+/* line 86, ../compass/sass/style.scss */
+#follow-wrapper .users-to-follow {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+/* line 90, ../compass/sass/style.scss */
+#follow-wrapper button {
+  width: 105px;
 }

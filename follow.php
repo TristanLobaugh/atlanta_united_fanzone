@@ -14,23 +14,25 @@
 
 ?>
 
-<div class="container">
+<div id="follow-wrapper" class="container">
 	<div class="row">
 		<h3 class="col-sm-12 text-center">Following</h3>
 		<div class="col-sm-8 col-sm-offset-2">
 			<?php foreach($following_array as $user): ?>
-				<div class="col-sm-2">
-					<button ng-click="follow('<?php print $user ;?>', 'unfollow')" class="btn btn-primary">UNFOLLOW</button>
-				</div>
-				<div class="col-sm-10"><?php print $user; ?></div>	
+				<div class="users-to-follow col-sm-12">
+					<div class="col-sm-2">
+						<button ng-click="follow('<?php print $user ;?>', 'unfollow')" class="btn btn-primary">UNFOLLOW</button>
+					</div>
+					<div class="col-sm-10"><?php print $user; ?></div>
+				</div>	
 			<?php endforeach; ?>
 
 		</div>
 		<div class="row"></div>
-		<h3 class="col-sm-12 text-center">Users not followed</h3>
+		<h3 class="col-sm-12 text-center">USERS YOU HAVE NOT FOLLOWED YET</h3>
 		<div class="col-sm-8 col-sm-offset-2">
 			<?php foreach($not_following_array as $user): ?>
-				<div class="col-sm-12">
+				<div class="users-to-follow col-sm-12">
 					<div class="col-sm-2">
 						<button ng-click="follow('<?php print $user ;?>', 'follow')" class="btn btn-primary">FOLLOW</button>
 					</div>

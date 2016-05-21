@@ -15,21 +15,21 @@ fcApp.controller("fcController", function($scope, $http){
 
 
 
-	$scope.upVote = function(element, vote){
+	$scope.vote = function(element, vote){
 		// console.log(element.target.parentElement.id);
-		$http.post("upVote_process.php", {
-			voteDirection: 1,
+		$http.post("vote_process.php", {
+			voteDirection: vote,
 			idOfPost: element.target.parentElement.id
 		}). then(function successCallback(response){
 			if(response.data == "notLoggedIn"){
-				element.currentTarget.children[0].innerHTML = "Must be logged in to vote!";
+				element.currentTarget.nextElementSibling.nextElementSibling.innerHTML = "Must be logged in to vote!";
 			}else if(response.data == "alreadyVoted"){
-				element.currentTarget.children[0].innerHTML = "Sorry you already voted!";
+				element.currentTarget.nextElementSibling.nextElementSibling.innerHTML = "Sorry you already voted!";
 			}else{
 				if(vote == 1){
-						element.currentTarget.children[0].innerHTML = response.data;
-				}else{
-					element.target.previousElementSibling.innerHTML = response.data;
+					element.currentTarget.children[0].innerHTML = response.data[0].upVotes;
+				}else if(vote == 0){
+					element.currentTarget.children[0].innerHTML = response.data[0].downVotes;
 				}
 			}
 		}, function errorCallback(response){
